@@ -107,6 +107,7 @@ def button_callback(window, button, action, mod):
 
         # convert from glfw screen coordinates (relative to the top-left corner)
         # to our camera space coordinates (relative to bottom-left corner) 
+        
         y = WINDOW_HEIGHT - y 
 
         if action==GLFW_PRESS:
@@ -132,7 +133,7 @@ def cursor_callback(window, xpos, ypos):
         g_control_points[g_moving_index].y = ypos
         
         # copy updateded control point positions to g_vbo_control_points
-        copy_points_data(g_control_points, g_vbo_control_points)
+        #copy_points_data(g_control_points, g_vbo_control_points)
 
         # generate curve points from updated control points
         # and copy them to g_vbo_curve_points
@@ -150,7 +151,7 @@ def initialize_vao_for_points(points):
 
     # only allocate VBO and not copy data by specifying the third argument to None
     vertices = glm.array(points)
-    glBufferData(GL_ARRAY_BUFFER, vertices.nbytes, None, GL_DYNAMIC_DRAW)
+    glBufferData(GL_ARRAY_BUFFER,vertices .nbytes, None, GL_DYNAMIC_DRAW)
 
     # configure vertex attributes
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * glm.sizeof(glm.float32), None)
